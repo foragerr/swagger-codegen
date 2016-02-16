@@ -6,12 +6,15 @@
         "URL={{basePath}}{{path}}",
         "Method={{httpMethod}}",
         "TargetFrame=",
-        "EncType=text/xml; charset=iso-8859-1",
+        "EncType={{#consumes}}{{mediaType}}{{#hasMore}}, {{/hasMore}}{{/consumes}}",
+        "RecContentType={{#produces}}{{mediaType}}{{#hasMore}}, {{/hasMore}}{{/produces}}"
         "Resource=0",
         "Referer=",
         "Mode=HTTP",
         "Body=",
         LAST);
+
+    {{#examples}}{{example}}{{#hasMore}}, {{/hasMore}}{{/examples}}
 
     lr_end_transaction("{{operationId}}", LR_AUTO);
 
